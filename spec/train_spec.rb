@@ -48,4 +48,13 @@ describe(Train) do
     end
   end
 
+  describe('#update') do
+    it ('updates a trains name') do
+      test_train = Train.new({:id => nil, :name => 'Flora'})
+      test_train.save()
+      test_train.update({:name => 'Not Flora'})
+      expect(test_train.name()).to(eq('Not Flora'))
+    end
+  end
+
 end
