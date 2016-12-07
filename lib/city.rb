@@ -44,4 +44,8 @@ attr_reader(:id, :name)
     DB.exec("UPDATE city SET name = '#{@name}' WHERE id = #{@id};")
   end
 
+  define_method(:delete) do
+    DB.exec("DELETE FROM city WHERE id = #{self.id()};")
+  end
+
 end
