@@ -18,38 +18,44 @@ describe(City) do
 
   describe('#name') do
     it('Returns the name of the city') do
-
+      test_city = City.new({:id => nil, :name => 'Ft. Lauderdale'})
+      test_city.save()
+      expect(test_city.name()).to(eq('Ft. Lauderdale'))
     end
   end
 
-  describe('.find') do
-    it('returns a city by looking up its id')do
-
-    end
-  end
+  # describe('.find') do
+  #   it('returns a city by looking up its id')do
+  #
+  #   end
+  # end
 
   describe('#save') do
     it('returns the saved citys') do
-
+      test_city = City.new({:id => nil, :name => 'Gainesville'})
+      test_city.save()
+      expect(City.all()).to(eq([test_city]))
     end
   end
 
   describe('#==') do
     it ('will override the == method') do
-
+      test_city1 = City.new({:id => nil, :name => 'Miami'})
+      test_city2 = City.new({:id => nil, :name => 'Miami'})
+      expect(test_city1).to(eq(test_city2))
     end
   end
-
-  describe('#update') do
-    it ('updates a citys name') do
-
-    end
-  end
-
-  describe('#delete') do
-    it('will delete a city') do
-
-    end
-  end
+  #
+  # describe('#update') do
+  #   it ('updates a citys name') do
+  #
+  #   end
+  # end
+  #
+  # describe('#delete') do
+  #   it('will delete a city') do
+  #
+  #   end
+  # end
 
 end

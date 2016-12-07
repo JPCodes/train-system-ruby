@@ -17,14 +17,14 @@ attr_reader(:id, :name)
     result =[]
     returned_cities.each() do |city|
       name = city.fetch('name')
-      id = city.fetch('id')
+      id = city.fetch('id').to_i
       result.push(City.new({:id => id, :name => name}))
     end
     result
   end
 
-  define_method(:==) do |other_train|
-
+  define_method(:==) do |other_city|
+    self.name() == other_city.name() && self.id() == other_city.id()
   end
 
   define_singleton_method(:find) do |identification|
