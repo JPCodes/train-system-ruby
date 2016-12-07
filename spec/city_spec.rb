@@ -9,25 +9,27 @@ describe(City) do
   end
 
   describe('#id') do
-    it('Returns id of the train') do
-
+    it('Returns id of the city') do
+      test_city = City.new({:id => nil, :name => 'Los Angeles'})
+      test_city.save()
+      expect(test_city.id()).to(be_an_instance_of(Fixnum))
     end
   end
 
   describe('#name') do
-    it('Returns the name of the train') do
+    it('Returns the name of the city') do
 
     end
   end
 
   describe('.find') do
-    it('returns a train by looking up its id')do
+    it('returns a city by looking up its id')do
 
     end
   end
 
   describe('#save') do
-    it('returns the saved trains') do
+    it('returns the saved citys') do
 
     end
   end
@@ -39,13 +41,13 @@ describe(City) do
   end
 
   describe('#update') do
-    it ('updates a trains name') do
+    it ('updates a citys name') do
 
     end
   end
 
   describe('#delete') do
-    it('will delete a train') do
+    it('will delete a city') do
 
     end
   end
