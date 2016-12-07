@@ -28,7 +28,14 @@ attr_reader(:id, :name)
   end
 
   define_singleton_method(:find) do |identification|
-
+    returned_cities = City.all()
+    found_city = nil
+    returned_cities.each() do |city|
+      if city.id() == identification
+        found_city = city
+      end
+    end
+    found_city
   end
 
   define_method(:update) do |attributes|

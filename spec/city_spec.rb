@@ -24,11 +24,13 @@ describe(City) do
     end
   end
 
-  # describe('.find') do
-  #   it('returns a city by looking up its id')do
-  #
-  #   end
-  # end
+  describe('.find') do
+    it('returns a city by looking up its id') do
+      test_city = City.new({:id => nil, :name => 'Dallas'})
+      test_city.save()
+      expect(City.find(test_city.id())).to(eq(test_city))
+    end
+  end
 
   describe('#save') do
     it('returns the saved citys') do
