@@ -27,4 +27,15 @@ attr_reader(:id, :name)
     self.name() == other_train.name() && self.id() == other_train.id()
   end
 
+  define_singleton_method(:find) do |identification|
+    all_trains = Train.all()
+    found_train = nil
+    all_trains.each do |train|
+      if train.id == identification
+        found_train = train
+      end
+    end
+  found_train
+  end
+
 end

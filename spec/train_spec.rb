@@ -23,12 +23,28 @@ describe(Train) do
     end
   end
 
+  describe('.find') do
+    it('returns a train by looking up its id')do
+    test_train = Train.new({:id => nil, :name => 'Getro'})
+    test_train.save()
+                                      # Not expecting an array
+    expect(Train.find(test_train.id())).to(eq(test_train))
+    end
+  end
 
   describe('#save') do
     it('returns the saved trains') do
       test_train = Train.new({:id => nil, :name => 'James'})
       test_train.save()
       expect(Train.all()).to(eq([test_train]))
+    end
+  end
+
+  describe('#==') do
+    it ('will override the == method') do
+      test_train1 = Train.new({:id => nil, :name => 'James'})
+      test_train2 = Train.new({:id => nil, :name => 'James'})
+      expect(test_train1).to(eq(test_train2))
     end
   end
 
