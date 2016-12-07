@@ -47,13 +47,16 @@ describe(City) do
       expect(test_city1).to(eq(test_city2))
     end
   end
-  #
-  # describe('#update') do
-  #   it ('updates a citys name') do
-  #
-  #   end
-  # end
-  #
+
+  describe('#update') do
+    it ('updates a citys name') do
+      test_city1 = City.new({:id => nil, :name => 'Jville'})
+      test_city1.save()
+      test_city1.update({:name => "Paris"})
+      expect(test_city1.name).to(eq("Paris"))
+    end
+  end
+
   # describe('#delete') do
   #   it('will delete a city') do
   #
