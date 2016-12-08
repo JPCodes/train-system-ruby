@@ -48,4 +48,24 @@ attr_reader(:id, :name)
     DB.exec("DELETE FROM city WHERE id = #{self.id()};")
   end
 
+  define_method(:add_train) do |train, time|
+    DB.exec("INSERT INTO stops (city_id, train_id, time_of_stop) VALUES (#{self.id}, #{train.id()}, '#{time}');")
+  end
+
+  define_method(:find_train) do
+    #return all the train_id that stops in the current city.
+    city_stops = DB.exec("SELECT train_id FROM stops WHERE city_id =#{self.id};")
+    #create an empty array to save train objects
+    trains = []
+    #iterate through city_stops array.
+    city_stops.each do |train|
+    #fetch the id
+    train_id = train.fetch('train_id').to_i
+    #use fetched id to search for the train objects
+    # push train objects to empty trains array
+    trains.push(Train.find(train_id))
+    end
+    trains
+  end
+  
 end

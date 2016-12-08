@@ -79,10 +79,5 @@ describe(Train) do
     end
   end
 
-  describe('#find_stops') do
-    it ('Returns train stops for a train') do
-
-    end
-  end
 
 end
