@@ -51,7 +51,7 @@ attr_reader(:id, :name)
 
 
   define_method(:update) do |attributes|
-    # Grabs name from argument? and sets it to @name
+    # Grabs name from argument, and sets it to @name
     @name = attributes.fetch(:name)
     @id = self.id()
     DB.exec("UPDATE train SET name = '#{@name}' WHERE id = #{@id};")
