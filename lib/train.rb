@@ -23,10 +23,27 @@ attr_reader(:id, :name)
     all_trains
   end
 
-  # 
-  # define_method(:add_stop) do |city, time|
-  #   DB.exec("INSERT INTO stops (city_id, train_id, time_of_stop) VALUES (#{city.id()}, #{self.id()}, '#{time}');")
-  # end
+
+  define_method(:add_city) do |city, time|
+    DB.exec("INSERT INTO stops (city_id, train_id, time_of_stop) VALUES (#{city.id()}, #{self.id()}, '#{time}');")
+  end
+
+  define_method(:find_stops) do
+    # Returns all city_ids a train stops through
+    train_stops = DB.exec("SELECT city_id FROM stops WHERE train_id = #{self.id()}")
+    # Create empty array to store city objects
+    cities = []
+    # Iterate through train_stops array
+    train_stops.each() do |city|
+      # Fetch id
+      city_id = city.fetch('city_id').to_i
+      # Use fetched id to search for the city object
+        # Push the city object into the empty storage array
+      cities.push(City.find(city_id))
+    end
+    # Returns the city objects that the train has stops at
+    cities
+  end
 
   define_method(:==) do |other_train|
     self.name() == other_train.name() && self.id() == other_train.id()
