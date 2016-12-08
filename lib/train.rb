@@ -23,20 +23,15 @@ attr_reader(:id, :name)
     all_trains
   end
 
+  # 
+  # define_method(:add_stop) do |city, time|
+  #   DB.exec("INSERT INTO stops (city_id, train_id, time_of_stop) VALUES (#{city.id()}, #{self.id()}, '#{time}');")
+  # end
+
   define_method(:==) do |other_train|
     self.name() == other_train.name() && self.id() == other_train.id()
   end
 
-  define_singleton_method(:find) do |identification|
-    all_trains = Train.all()
-    found_train = nil
-    all_trains.each do |train|
-      if train.id == identification
-        found_train = train
-      end
-    end
-  found_train
-  end
 
   define_method(:update) do |attributes|
     # Grabs name from argument? and sets it to @name
@@ -47,5 +42,16 @@ attr_reader(:id, :name)
 
   define_method(:delete) do
     DB.exec("DELETE FROM train WHERE id = #{self.id()};")
+  end
+
+  define_singleton_method(:find) do |identification|
+    all_trains = Train.all()
+    found_train = nil
+    all_trains.each do |train|
+      if train.id == identification
+        found_train = train
+      end
+    end
+    found_train
   end
 end

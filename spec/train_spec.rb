@@ -67,5 +67,21 @@ describe(Train) do
       expect(Train.all()).to(eq([test_train2]))
     end
   end
-  
+
+  describe('#add_stop') do
+    it('Add a train stop') do
+      test_train = Train.new({:id => nil, :name => 'Red Line'})
+      test_train.save()
+      test_city = City.new({:id => nil, :name => 'Los Angeles'})
+      test_train.add_stop(test_city, '03:00:00')
+      expect(test_train.find_stops()).to(eq(???))
+    end
+  end
+
+  describe('#find_stops') do
+    it ('Returns train stops for a train') do
+
+    end
+  end
+
 end
