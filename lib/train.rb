@@ -45,6 +45,11 @@ attr_reader(:id, :name)
     cities
   end
 
+  define_method(:time_of_stop) do |city_id|
+    result = DB.exec("SELECT time_of_stop FROM stops WHERE train_id = #{self.id} and city_id = #{city_id};")
+    result.first().fetch('time_of_stop')
+  end
+
   define_method(:==) do |other_train|
     self.name() == other_train.name() && self.id() == other_train.id()
   end

@@ -69,7 +69,7 @@ describe(City) do
   end
 
   describe('#add_train') do
-    it('will add train to a  city') do
+    it('will add train to a city') do
       city = City.new({:id => nil, :name => "pdx"})
       city.save()
       train = Train.new({:id => nil, :name=> "blue"})

@@ -1,0 +1,20 @@
+<h1>Route Information</h1>
+
+<% if @all_trains.any?  %>
+
+<ul>
+  <% @all_trains.each do |train| %>
+  <li><a href="#"> <%= train.name()%></a></li>
+    <ol>
+    <% train.find_stops.each do |city| %>
+      <% current_stop_time = train.time_of_stop(city.id()) %>
+      <li><%= city.name() %>, <%= current_stop_time %></li>
+    <% end %>
+    </ol>
+  <% end %>
+</ul>
+<% else %>
+
+<p>No information to display, add a train and a stop to the database.</p>
+
+<% end %>
