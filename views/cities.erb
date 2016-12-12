@@ -1,0 +1,14 @@
+<h1>Cities List</h1>
+
+<% if @all_cities.nil? %>
+<p>Please add a city to populate this page.</p>
+<% else %>
+  <ul>
+    <% @all_cities.each do |city| %>
+  <li><a href="/city/ <%= city.id()%> "><%= city.name %></a></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<p><a href="/">Home</a></p>
+<p><a href="/admin">Admin</a></p>

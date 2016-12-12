@@ -1,0 +1,14 @@
+<h1>Trains List</h1>
+
+<% if @all_trains.nil? %>
+<p>Please add a train to populate this page.</p>
+<% else %>
+  <ul>
+    <% @all_trains.each do |train| %>
+  <li><a href="/train/ <%= train.id()%> "><%= train.name %></a></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<p><a href="/">Home</a></p>
+<p><a href="/admin">Admin</a></p>

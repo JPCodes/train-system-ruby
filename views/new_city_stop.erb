@@ -1,0 +1,23 @@
+<h1>Add a Stop to a City</h1>
+
+<form action="/train_to_city" method="post">
+
+  <label for="city">Select a City</label>
+  <select id="city" name="city" type ="text">
+    <% @all_cities.each() do |city|  %>
+      <option value="<% city.id() %>"> <%= city.name() %> </option>
+      <% end %>
+  </select>
+
+  <label for="train">Select a Train</label>
+  <select id="train" name="train" type="text">
+    <% @all_trains.each() do |train| %>
+      <option value=" <%= train.id() %>"><%= train.name() %></option>
+    <% end %>
+  </select>
+
+  <label for="time">Please Add the time:</label>
+  <input id="time" type="text" name="time_input">
+
+  <button type="submit">Add Train</button>
+</form>
